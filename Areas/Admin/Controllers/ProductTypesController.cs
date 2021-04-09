@@ -38,7 +38,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             {
                 _db.ProductTypes.Add(productTypes);
                 await _db.SaveChangesAsync();
-                TempData["save"] = "Product Type has been save succesfully";
+                TempData["mysave"] = "Product Type has been save succesfully";
                 return RedirectToAction(nameof(Index));
             }
             return View(productTypes);
