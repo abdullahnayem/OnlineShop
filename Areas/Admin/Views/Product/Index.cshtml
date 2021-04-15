@@ -1,0 +1,164 @@
+﻿@using OnlineShop.Models;
+@model IEnumerable<Products>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info"> Product List</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info"><i class="fa fa-plus"></i>&nbsp;Add New Product </a>
+    </div>
+</div>
+
+<br />
+
+
+<div>
+    <table class="table table-striped border">
+
+        <tr class="table-info">
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTypes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialTagId)
+            </th>
+
+            <th> </th>
+            <th> </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td> @item.Name</td>
+            <td> @item.Price</td>
+            <td> @item.ProductColor</td>
+            <td> @item.IsAvailable</td>
+            <td> @item.ProductTypes.ProductType</td>
+            <td> @item.SpecialTag.Name</td>
+
+            <td>
+                <partial name="_ButtonPartial" model="@item.Id" />
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var mysave = '@TempData["mysave"]'
+            if (mysave!=null){
+            alertify.success(mysave);
+        }
+        })
+    </script>
+}
+
+@*@model IEnumerable<OnlineShop.Models.Products>
+
+    @{
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h1>Index</h1>
+
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info"> Product List</h2>
+
+        </div>
+
+        <div class="col-6 text-right">
+            <a asp-action="Create" class="btn btn-info"><i class="fa fa-plus"></i>&nbsp; Add New Product </a>
+        </div>
+    </div>
+    <br />
+
+
+    <table class="table table-striped border">
+
+            <tr class="table-info">
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductColor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsAvailable)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductTypes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpecialTag)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductColor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAvailable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductTypes.ProductType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpecialTag.Name)
+                </td>
+
+                <td>
+                    <partial name="_ButtonPartialforProduct" model="@item.Id" />
+
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>*@

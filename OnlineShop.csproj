@@ -21,4 +21,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Images\1.png" />
+  </ItemGroup>
+
 </Project>
